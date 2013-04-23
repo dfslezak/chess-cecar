@@ -1,0 +1,99 @@
+#------------------------------------------------------------------------
+#                           ELEFANTE - CECAR
+#
+# Host        : elefante.exp.dc.uba.ar
+# Titulo      : Ejemplo de script para Torque
+# Descripcion : Este script se utiliza para enviar a ejecutar programas
+#               en batch por medio de Torque.
+#               El comando 'qsub' acepta parametros por linea de comando
+#               o bien pueden definirse dentro de este script. Las lineas
+#               que comienzan con '#PBS' son los parametros que tomara el
+#               comando 'qsub', NO son comentarios.
+#
+#               Lea atentamente los comentarios del script y modifique
+#               con lo que corresponda donde encuentre la palabra COMPLETAR
+#
+#
+# Ejecucion   : qsub script
+#
+#------------------------------------------------------------------------
+
+#------------------------------------------------------------------------
+# Asigna un nombre al trabajo
+
+#PBS -N stockfish
+
+#------------------------------------------------------------------------
+# Configura la cantidad de nodos a utilizar.
+# nodes indica la cantidad de maquinas y ppn la cantidad de procesos
+# por nodo.
+# Si queremos solicitar 3 procesos con 1 por nodo.
+# EJ. -l nodes=3
+# Si queremos solicitar 8 procesos con 2 procesos por nodo.
+# EJ. -l nodes=4:ppn=2
+
+#PBS -l nodes=4:ppn=4
+
+#------------------------------------------------------------------------
+# Deja la salida de 'standard output' y 'standard error' en diferentes
+# archivos. Para que guarde todo en un unico archivo se define
+# la opcion -j donde:
+# oe :  'std output' y 'std error' como output (*.o*)
+# eo :  'std output' y 'std error' como error (*.e*)
+
+##PBS -j eo
+#PBS -k eo
+
+#------------------------------------------------------------------------
+# El 'qsub' envia un mail segun el/los evento/s definido/s:
+#     a abort
+#     b begin
+#     e end
+#     n never
+
+#PBS -m be
+
+#------------------------------------------------------------------------
+# Especificar direccion de e-mail donde se enviara el mail
+
+#PBS -M dfslezak@gmail.com
+
+#------------------------------------------------------------------------
+# La variable PBS_NODEFILE es una variable de entorno del PBS, hace
+# referencia al archivo que contiene la lista de nodos que se utilizara
+# para esta corrida dependiendo de la definicion anterior '-l nodes=...'
+# La variable NP guardara la cantidad de nodos elegidos
+
+##NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
+NP=4
+
+#------------------------------------------------------------------------
+# Las  siguientes lineas imprimiran en el archivo de output los nodos que
+# fueron utilizados en la corrida.
+
+echo "nodes ($NP cpu total):"
+sort $PBS_NODEFILE | uniq
+echo
+
+#------------------------------------------------------------------------
+# La variable PBS_O_WORKDIR es una variable de entorno del PBS, indica
+# el PATH absoluto del directorio de trabajo corriente
+# y es en este directorio donde quedaran los archivos de salida.
+
+cd $PBS_O_WORKDIR
+
+#------------------------------------------------------------------------
+# Carga los modulos necesarios para correr el trabajo.
+source /opt/Modules/3.2.6/init/bash
+module add mvapich2
+
+#------------------------------------------------------------------------
+#  Ejecuta el trabajo
+cd /home/dfslezak/repos/neurociencia/ajedrez/codigo/processStockfish
+export LD_LIBRARY_PATH=/home/dfslezak/local/lib/
+export PATH=$PATH:/home/dfslezak/local/bin
+mpiexec --pernode --comm=pmi -np $NP /home/dfslezak/local/bin/python -u runStockfishAnalysis.py -d 12 -m 6 -n 1200
+
+#------------------------------------------------------------------------
+# Termina el script
+exit 0

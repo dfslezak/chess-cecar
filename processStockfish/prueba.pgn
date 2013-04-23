@@ -1,0 +1,16 @@
+[Event "FICS rated blitz game"]
+[Site "FICS"]
+[FICSGamesDBGameNo "250019207"]
+[White "uloseiwin"]
+[Black "Lugosi"]
+[WhiteElo "1429"]
+[BlackElo "1404"]
+[TimeControl "180+0"]
+[Date "2010.06.21"]
+[WhiteClock "0:03:00.000"]
+[BlackClock "0:03:00.000"]
+[ECO "B06"]
+[PlyCount "58"]
+[Result "0-1"]
+
+1. d4 {[%emt 0.0]} d6 {[%emt 0.0]} 2. e4 {[%emt 1.391]} g6 {[%emt 0.356]} 3. c3 {[%emt 1.469]} Bg7 {[%emt 0.378]} 4. Be3 {[%emt 1.797]} Nf6 {[%emt 0.517]} 5. f3 {[%emt 2.985]} O-O {[%emt 1.587]} 6. Bc4 {[%emt 1.203]} Nbd7 {[%emt 0.839]} 7. h4 {[%emt 2.203]} c5 {[%emt 0.679]} 8. d5 {[%emt 1.985]} Nh5 {[%emt 2.868]} 9. Ne2 {[%emt 5.625]} a6 {[%emt 2.753]} 10. Nd2 {[%emt 1.109]} b5 {[%emt 1.893]} 11. Bb3 {[%emt 2.25]} Ne5 {[%emt 3.955]} 12. Nf4 {[%emt 7.0]} Nxf4 {[%emt 3.159]} 13. Bxf4 {[%emt 1.203]} Nd3+ {[%emt 0.681]} 14. Kf1 {[%emt 12.25]} Nxf4 {[%emt 1.413]} 15. g3 {[%emt 2.015]} Nd3 {[%emt 11.781]} 16. Qc2 {[%emt 2.593]} c4 {[%emt 2.504]} 17. Bxc4 {[%emt 3.703]} bxc4 {[%emt 2.152]} 18. Nxc4 {[%emt 0.797]} Nc5 {[%emt 17.527]} 19. h5 {[%emt 2.765]} Rb8 {[%emt 6.815]} 20. hxg6 {[%emt 2.406]} fxg6 {[%emt 1.09]} 21. f4 {[%emt 2.766]} Bg4 {[%emt 4.324]} 22. Ne3 {[%emt 4.188]} Bd7 {[%emt 6.509]} 23. b3 {[%emt 5.719]} Qc7 {[%emt 11.221]} 24. Qh2 {[%emt 3.578]} h6 {[%emt 3.892]} 25. e5 {[%emt 7.796]} dxe5 {[%emt 5.248]} 26. f5 {[%emt 1.672]} g5 {[%emt 4.139]} 27. Ng4 {[%emt 2.578]} Qd6 {[%emt 8.6]} 28. c4 {[%emt 3.14]} Bxf5 {[%emt 1.945]} 29. Ne3 {[%emt 7.625]} Be4+ {[%emt 8.96]} {White resigns} 0-1

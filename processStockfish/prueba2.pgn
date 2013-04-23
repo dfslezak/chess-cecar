@@ -1,0 +1,16 @@
+[Event "FICS rated blitz game"]
+[Site "FICS"]
+[FICSGamesDBGameNo "250019206"]
+[White "Hairsear"]
+[Black "somejoseph"]
+[WhiteElo "1010"]
+[BlackElo "1084"]
+[TimeControl "600+0"]
+[Date "2010.06.21"]
+[WhiteClock "0:10:00.000"]
+[BlackClock "0:10:00.000"]
+[ECO "C21"]
+[PlyCount "37"]
+[Result "1-0"]
+
+1. e4 {[%emt 0.0]} e5 {[%emt 0.0]} 2. d4 {[%emt 1.891]} exd4 {[%emt 3.633]} 3. c3 {[%emt 3.609]} dxc3 {[%emt 2.569]} 4. Nf3 {[%emt 1.266]} Be7 {[%emt 3.404]} 5. Bc4 {[%emt 3.25]} Nf6 {[%emt 1.231]} 6. e5 {[%emt 2.515]} cxb2 {[%emt 15.791]} 7. Bxb2 {[%emt 3.53]} Ne4 {[%emt 5.548]} 8. Qd5 {[%emt 5.968]} O-O {[%emt 11.977]} 9. Qxe4 {[%emt 4.594]} Nc6 {[%emt 5.077]} 10. O-O {[%emt 6.515]} d6 {[%emt 8.422]} 11. Nbd2 {[%emt 29.469]} dxe5 {[%emt 7.55]} 12. Bxe5 {[%emt 12.827]} Nxe5 {[%emt 31.036]} 13. Nxe5 {[%emt 25.702]} Qxd2 {[%emt 10.227]} 14. Nxf7 {[%emt 47.953]} Rxf7 {[%emt 13.63]} 15. Bxf7+ {[%emt 2.5]} Kxf7 {[%emt 0.96]} 16. Rfe1 {[%emt 1.157]} Qd6 {[%emt 8.679]} 17. Rad1 {[%emt 3.656]} Qf6 {[%emt 12.485]} 18. Rd8 {[%emt 37.907]} Bxd8 {[%emt 7.504]} 19. Qe8# {[%emt 4.875]} {Black checkmated} 1-0
