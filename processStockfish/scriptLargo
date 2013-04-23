@@ -32,7 +32,7 @@
 # Si queremos solicitar 8 procesos con 2 procesos por nodo.
 # EJ. -l nodes=4:ppn=2
 
-#PBS -l nodes=4:ppn=4
+#PBS -l nodes=4:ppn=1
 
 #------------------------------------------------------------------------
 # Deja la salida de 'standard output' y 'standard error' en diferentes
@@ -64,8 +64,7 @@
 # para esta corrida dependiendo de la definicion anterior '-l nodes=...'
 # La variable NP guardara la cantidad de nodos elegidos
 
-##NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
-NP=4
+NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
 
 #------------------------------------------------------------------------
 # Las  siguientes lineas imprimiran en el archivo de output los nodos que
@@ -84,15 +83,16 @@ cd $PBS_O_WORKDIR
 
 #------------------------------------------------------------------------
 # Carga los modulos necesarios para correr el trabajo.
-source /opt/Modules/3.2.6/init/bash
-module add mvapich2
+#source /opt/Modules/3.2.6/init/bash
+#module add mvapich2
 
 #------------------------------------------------------------------------
 #  Ejecuta el trabajo
-cd /home/dfslezak/repos/neurociencia/ajedrez/codigo/processStockfish
-export LD_LIBRARY_PATH=/home/dfslezak/local/lib/
-export PATH=$PATH:/home/dfslezak/local/bin
-mpiexec --pernode --comm=pmi -np $NP /home/dfslezak/local/bin/python -u runStockfishAnalysis.py -d 12 -m 6 -n 1200
+cd /home/dfslezak/repos/git/chess-cecar/processStockfish
+#export LD_LIBRARY_PATH=/home/dfslezak/local/lib/
+#export PATH=$PATH:/home/dfslezak/local/bin
+#mpiexec --npernode 1 -np $NP python -u runStockfishAnalysis.py -d 12 -m 6 -n 1500
+mpiexec -np $NP python -u runStockfishAnalysis.py -d 12 -m 6 -n 10
 
 #------------------------------------------------------------------------
 # Termina el script
