@@ -78,8 +78,9 @@ for i in range(numgames):
     # id_game>"+str(random_game)+" AND (stockfish_analysed IS NULL OR NOT
     # stockfish_analysed) AND ply_count>5 AND ply_count<200 AND game_type<>4
     # AND game_type<>5 ORDER BY id_game LIMIT 1;"
-    statement = "SELECT id_game, get_game(id_game) FROM games JOIN users as u1 ON u1.id_user=games.w_user JOIN users as u2 ON u2.id_user=games.b_user WHERE id_game>"+str(
-        random_game)+" AND (stockfish_analysed IS NULL OR NOT stockfish_analysed) AND ply_count>5 AND ply_count<200 AND game_type<>4 AND game_type<>5 AND (u1.timezone is NOT NULL OR u2.timezone is NOT NULL) AND (u1.has_chronotype OR u2.has_chronotype) ORDER BY id_game LIMIT 1;"
+    #statement = "SELECT id_game, get_game(id_game) FROM games JOIN users as u1 ON u1.id_user=games.w_user JOIN users as u2 ON u2.id_user=games.b_user WHERE id_game>"+str(
+    #    random_game)+" AND (stockfish_analysed IS NULL OR NOT stockfish_analysed) AND ply_count>5 AND ply_count<200 AND game_type<>4 AND game_type<>5 AND (u1.timezone is NOT NULL OR u2.timezone is NOT NULL) AND (u1.has_chronotype OR u2.has_chronotype) ORDER BY id_game LIMIT 1;"
+    statement = "SELECT id_game, get_game(id_game) FROM unanalyzed_games_tz WHERE id_game>"+str(random_game)+" LIMIT 1;"
     cursor.execute(statement)
     result = cursor.fetchone()
     # If no more games to analyse, simpley start all over again choosing
