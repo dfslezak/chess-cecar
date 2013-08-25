@@ -82,15 +82,15 @@ for i in range(numgames):
     #    random_game)+" AND (stockfish_analysed IS NULL OR NOT stockfish_analysed) AND ply_count>5 AND ply_count<200 AND game_type<>4 AND game_type<>5 AND (u1.timezone is NOT NULL OR u2.timezone is NOT NULL) AND (u1.has_chronotype OR u2.has_chronotype) ORDER BY id_game LIMIT 1;"
     random_color = random.randint(1, 2)
     if random_color == 1:
-        statement = "SELECT id_game, get_game(id_game) FROM unanalyzed_whitegames_tz WHERE id_game>"+str(random_game)+" LIMIT 1;"
+        statement = "SELECT id_game, get_game(id_game) FROM unanalyzed_whitegames_tz WHERE id_game>"+str(random_game)+" AND id_game<"+str(random_game+1000000)+" LIMIT 1;"
     else:
-        statement = "SELECT id_game, get_game(id_game) FROM unanalyzed_blackgames_tz WHERE id_game>"+str(random_game)+" LIMIT 1;"
+        statement = "SELECT id_game, get_game(id_game) FROM unanalyzed_blackgames_tz WHERE id_game>"+str(random_game)+" AND id_game<"+str(random_game+1000000)+" LIMIT 1;"
         
     cursor.execute(statement)
     result = cursor.fetchone()
     # If no more games to analyse, simpley start all over again choosing
     # another total_time.
-    if len(result) == 0:
+    if result is None:
         # print 'No more games of total_time='+str(total_time)
         print 'No more games to analyse'
         continue
