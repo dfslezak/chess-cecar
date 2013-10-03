@@ -97,7 +97,7 @@ def analyzeGame(pgntext, depth, fromdepth):
 
     # *********** Convert SAN format to Long Algebraic ************
     pgn_extract = Popen(
-        ["pgn-extract", "-Wlalg", "-C", "-N", "--notags", "--noresults",
+        ["./pgn-extract", "-Wlalg", "-C", "-N", "--notags", "--noresults",
                         "--nomovenumbers"], bufsize=0, stdin=PIPE, stdout=PIPE, stderr=STDOUT, shell=False)
     pgn_extract.stdin.write(pgntext)
 

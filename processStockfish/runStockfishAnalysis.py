@@ -78,8 +78,39 @@ for i in range(numgames):
     # id_game>"+str(random_game)+" AND (stockfish_analysed IS NULL OR NOT
     # stockfish_analysed) AND ply_count>5 AND ply_count<200 AND game_type<>4
     # AND game_type<>5 ORDER BY id_game LIMIT 1;"
+    players = [
+        2420,
+        3228,
+        4120,
+        7100,
+        7713,
+       10216,
+       10253,
+       11373,
+       13134,
+       14435,
+       16653,
+       20714,
+       22893,
+       39324,
+       47995,
+       48199,
+       48471,
+       64176,
+       78962,
+       86134,
+      116215,
+      132369
+      ]
+    players1_str = [' OR u1.id_user='+str(us) for us in players]
+    players1_str = ''.join(players1_str)[4:]
+    players2_str = [' OR u2.id_user='+str(us) for us in players]
+    players2_str = ''.join(players2_str)[4:]
+    
+    pl_str = players1_str + ' OR ' + players2_str    
+    
     statement = "SELECT id_game, get_game(id_game) FROM games JOIN users as u1 ON u1.id_user=games.w_user JOIN users as u2 ON u2.id_user=games.b_user WHERE id_game>"+str(
-        random_game)+" AND (stockfish_analysed IS NULL OR NOT stockfish_analysed) AND ply_count>5 AND ply_count<200 AND game_type<>4 AND game_type<>5 AND (u1.timezone is NOT NULL OR u2.timezone is NOT NULL) AND (u1.has_chronotype OR u2.has_chronotype) ORDER BY id_game LIMIT 1;"
+        random_game)+" AND (stockfish_analysed IS NULL OR NOT stockfish_analysed) AND ply_count>5 AND ply_count<200 AND game_type<>4 AND game_type<>5 AND (" + pl_str + ") ORDER BY id_game LIMIT 1;"
     cursor.execute(statement)
     result = cursor.fetchone()
     # If no more games to analyse, simpley start all over again choosing
